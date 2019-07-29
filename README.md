@@ -10,7 +10,7 @@
 
 generate_certificate_and_keystore.sh	生成根证书服务端客户端证书以及导入keystore
 
-check_local_port_certificate.sh	端口证书过期检查	
+check_local_port_certificate.sh	端口证书以及客户端证书过期检查	
 
 postgres_get_server_cert.py	postgres数据库端口证书检查
 
