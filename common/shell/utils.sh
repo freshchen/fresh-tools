@@ -39,3 +39,12 @@ safe_append_line() {
     grep -q -e "${line}" ${file} &>/dev/null || echo ${line} >> ${file} || return 1
     return 0
 }
+
+# 将字符串转为ASCLL码作为唯一标识ID
+string_to_ascll() {
+    local string=${1}
+    local length=${#string}
+    local string_ascll=$(echo "${string}" | tr -d "\n" | od -An -t dC)
+    local string_ascll=$(echo "${string_ascll}" | tr ' ' .)
+    eval "${length}.${string_ascll}"
+}
