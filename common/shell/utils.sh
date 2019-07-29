@@ -44,7 +44,7 @@ safe_append_line() {
 string_to_ascll() {
     local string=${1}
     local length=${#string}
-    local string_ascll=$(echo "${string}" | tr -d "\n" | od -An -t dC)
-    local string_ascll=$(echo "${string_ascll}" | tr ' ' .)
+    local string_ascll=$(echo ${string} | tr -d "\n" | od -An -t dC)
+    local string_ascll=$(echo ${string_ascll} | tr ' ' .)
     eval "${length}.${string_ascll}"
 }
