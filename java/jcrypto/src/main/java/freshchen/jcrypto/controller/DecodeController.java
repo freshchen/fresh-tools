@@ -1,6 +1,7 @@
 package freshchen.jcrypto.controller;
 
-import freshchen.jcrypto.util.DecodeUtil;
+import freshchen.jcrypto.pojo.CryptoResponse;
+import freshchen.jcrypto.service.DecodeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,15 +16,30 @@ import org.springframework.web.bind.annotation.*;
 public class DecodeController {
 
     @Autowired
-    private DecodeUtil decodeUtil;
+    private DecodeService decodeService;
 
-    @PostMapping("/base64/{text}")
-    public String base64(@PathVariable String text){
-        return decodeUtil.base64(text);
+    @GetMapping("/base64/{text}")
+    public CryptoResponse base64(@PathVariable String text) {
+        return decodeService.base64(text);
     }
 
-    @PostMapping("/base32/{text}")
-    public String base32(@PathVariable String text){
-        return decodeUtil.base32(text);
+    @GetMapping("/base32/{text}")
+    public CryptoResponse base32(@PathVariable String text) {
+        return decodeService.base32(text);
+    }
+
+    @GetMapping("/aes/{text}/{key}")
+    public CryptoResponse aes(@PathVariable String text, @PathVariable String key) {
+        return decodeService.aes(text, key);
+    }
+
+    @GetMapping("/des/{text}/{key}")
+    public CryptoResponse des(@PathVariable String text, @PathVariable String key) {
+        return decodeService.des(text, key);
+    }
+
+    @GetMapping("/rsa/{text}/{key}")
+    public CryptoResponse rsa(@PathVariable String text, @PathVariable String key) {
+        return decodeService.rsa(text, key);
     }
 }
