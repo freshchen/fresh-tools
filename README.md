@@ -4,7 +4,7 @@
 
 ### script/common
 
-通用方法
+脚本常用方法收藏
 
 ### script/certificate
 
@@ -20,4 +20,8 @@ create_loop_dev_for_openstack_cinder.sh	虚拟块存储文件创建逻辑卷
 
 host_add_route_to_openstack_instance.sh	主机到虚拟机加路由
 
-openstack-python-client-api.py	常用组件的puthon调用接口
+openstack-python-client-api.py 常用组件的puthon调用接口
+
+### java/jcrypto
+
+http://localhost:8991/swagger-ui.html 在线常用的加密解密工具

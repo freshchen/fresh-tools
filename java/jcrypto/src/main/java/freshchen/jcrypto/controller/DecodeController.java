@@ -2,9 +2,7 @@ package freshchen.jcrypto.controller;
 
 import freshchen.jcrypto.util.DecodeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @program: fresh-tools
@@ -19,8 +17,13 @@ public class DecodeController {
     @Autowired
     private DecodeUtil decodeUtil;
 
-    @RequestMapping("/base64/{text}")
+    @PostMapping("/base64/{text}")
     public String base64(@PathVariable String text){
         return decodeUtil.base64(text);
+    }
+
+    @PostMapping("/base32/{text}")
+    public String base32(@PathVariable String text){
+        return decodeUtil.base32(text);
     }
 }
