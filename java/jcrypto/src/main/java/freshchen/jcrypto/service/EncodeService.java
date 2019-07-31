@@ -1,6 +1,6 @@
 package freshchen.jcrypto.service;
 
-import freshchen.jcrypto.pojo.CryptoResponse;
+import freshchen.jcrypto.pojo.KeyTextResponse;
 
 /**
  * @program: fresh-tools
@@ -9,13 +9,13 @@ import freshchen.jcrypto.pojo.CryptoResponse;
  * @Description:
  */
 public interface EncodeService {
-    CryptoResponse base64(String text);
+    KeyTextResponse base64(String text);
 
-    CryptoResponse base32(String text);
+    KeyTextResponse base32(String text);
 
-    CryptoResponse aes(String text);
+    KeyTextResponse aes(String text);
 
-    CryptoResponse des(String text);
+    KeyTextResponse des(String text);
 
-    CryptoResponse rsa(String text);
+    KeyTextResponse rsa(String text);
 }

@@ -1,6 +1,6 @@
 package freshchen.jcrypto.controller;
 
-import freshchen.jcrypto.pojo.CryptoResponse;
+import freshchen.jcrypto.pojo.KeyTextResponse;
 import freshchen.jcrypto.service.EncodeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,28 +18,28 @@ public class EncodeController {
     @Autowired
     private EncodeService encodeService;
 
-    @GetMapping("/base64/{text}")
-    public CryptoResponse base64(@PathVariable String text) {
+    @PostMapping("/base64/{text}")
+    public KeyTextResponse base64(@PathVariable String text) {
         return encodeService.base64(text);
     }
 
-    @GetMapping("/base32/{text}")
-    public CryptoResponse base32(@PathVariable String text) {
+    @PostMapping("/base32/{text}")
+    public KeyTextResponse base32(@PathVariable String text) {
         return encodeService.base32(text);
     }
 
-    @GetMapping("/aes/{text}")
-    public CryptoResponse aes(@PathVariable String text) {
+    @PostMapping("/aes/{text}")
+    public KeyTextResponse aes(@PathVariable String text) {
         return encodeService.aes(text);
     }
 
-    @GetMapping("/des/{text}")
-    public CryptoResponse des(@PathVariable String text) {
+    @PostMapping("/des/{text}")
+    public KeyTextResponse des(@PathVariable String text) {
         return encodeService.des(text);
     }
 
-    @GetMapping("/rsa/{text}")
-    public CryptoResponse rsa(@PathVariable String text) {
+    @PostMapping("/rsa/{text}")
+    public KeyTextResponse rsa(@PathVariable String text) {
         return encodeService.rsa(text);
     }
 }

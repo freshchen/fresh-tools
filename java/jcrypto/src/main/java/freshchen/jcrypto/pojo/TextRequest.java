@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * @program: fresh-tools
- * @Date: 2019/7/31 20:20
+ * @Date: 2019/8/1 0:47
  * @Author: Ling Chen
  * @Description:
  */
@@ -15,11 +15,6 @@ import org.springframework.stereotype.Component;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CryptoResponse {
-    private String key;
+public class TextRequest {
     private String text;
-
-    public CryptoResponse(String text) {
-        this.text = text;
-    }
 }

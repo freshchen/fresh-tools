@@ -1,6 +1,7 @@
 package freshchen.jcrypto.controller;
 
-import freshchen.jcrypto.pojo.CryptoResponse;
+import freshchen.jcrypto.pojo.KeyTextResponse;
+import freshchen.jcrypto.pojo.KeyTextRequest;
 import freshchen.jcrypto.service.DecodeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,28 +19,28 @@ public class DecodeController {
     @Autowired
     private DecodeService decodeService;
 
-    @GetMapping("/base64/{text}")
-    public CryptoResponse base64(@PathVariable String text) {
+    @PostMapping("/base64/{text}")
+    public KeyTextResponse base64(@PathVariable String text) {
         return decodeService.base64(text);
     }
 
-    @GetMapping("/base32/{text}")
-    public CryptoResponse base32(@PathVariable String text) {
+    @PostMapping("/base32/{text}")
+    public KeyTextResponse base32(@PathVariable String text) {
         return decodeService.base32(text);
     }
 
-    @GetMapping("/aes/{text}/{key}")
-    public CryptoResponse aes(@PathVariable String text, @PathVariable String key) {
-        return decodeService.aes(text, key);
+    @PostMapping("/aes/{text}/{key}")
+    public KeyTextResponse aes(@RequestBody KeyTextRequest request) {
+        return decodeService.aes(request.getText(), request.getKey());
     }
 
-    @GetMapping("/des/{text}/{key}")
-    public CryptoResponse des(@PathVariable String text, @PathVariable String key) {
-        return decodeService.des(text, key);
+    @PostMapping("/des/")
+    public KeyTextResponse des(@RequestBody KeyTextRequest request) {
+        return decodeService.des(request.getText(), request.getKey());
     }
 
-    @GetMapping("/rsa/{text}/{key}")
-    public CryptoResponse rsa(@PathVariable String text, @PathVariable String key) {
-        return decodeService.rsa(text, key);
+    @PostMapping("/rsa/")
+    public KeyTextResponse rsa(@RequestBody KeyTextRequest request) {
+        return decodeService.rsa(request.getText(), request.getKey());
     }
 }
