@@ -5,6 +5,7 @@ import cn.hutool.core.codec.Base64;
 import cn.hutool.crypto.SecureUtil;
 import cn.hutool.crypto.asymmetric.KeyType;
 import cn.hutool.crypto.asymmetric.RSA;
+import cn.hutool.crypto.symmetric.RC4;
 import cn.hutool.crypto.symmetric.SymmetricAlgorithm;
 import cn.hutool.crypto.symmetric.SymmetricCrypto;
 import freshchen.jcrypto.pojo.KeyTextResponse;
@@ -45,7 +46,16 @@ public class EncodeServiceImpl implements EncodeService {
     @Override
     public KeyTextResponse rsa(String text) {
         RSA rsa = new RSA();
-        byte[] encrypt = rsa.encrypt(text, KeyType.PrivateKey);
-        return new KeyTextResponse(rsa.getPublicKeyBase64(), Base64.encode(encrypt));
+        byte[] encrypt = rsa.encrypt(text, KeyType.PublicKey);
+        return new KeyTextResponse(rsa.getPrivateKeyBase64(), Base64.encode(encrypt));
     }
+
+    @Override
+    public KeyTextResponse rc4(String text, String key) {
+        RC4 rc4 = new RC4(key);
+        byte[] crypt = rc4.encrypt(text);
+        return new KeyTextResponse(key, Base64.encode(crypt));
+    }
+
+
 }

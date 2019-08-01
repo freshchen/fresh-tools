@@ -19,4 +19,7 @@ public interface EncodeService {
     KeyTextResponse des(String text);
 
     KeyTextResponse rsa(String text);
+
+    KeyTextResponse rc4(String text, String key);
+
 }

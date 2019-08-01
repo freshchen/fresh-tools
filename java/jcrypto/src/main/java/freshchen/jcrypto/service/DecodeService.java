@@ -1,6 +1,5 @@
 package freshchen.jcrypto.service;
 
-import freshchen.jcrypto.pojo.KeyTextResponse;
 import freshchen.jcrypto.pojo.TextResponse;
 
 /**
@@ -11,13 +10,16 @@ import freshchen.jcrypto.pojo.TextResponse;
  */
 public interface DecodeService {
 
-    KeyTextResponse base64(String text);
+    TextResponse base64(String text);
 
-    KeyTextResponse base32(String text);
+    TextResponse base32(String text);
 
-    KeyTextResponse aes(String text, String key);
+    TextResponse aes(String text, String key);
 
-    KeyTextResponse des(String text, String key);
+    TextResponse des(String text, String key);
 
     TextResponse rsa(String text, String key);
+
+    TextResponse rc4(String text, String key);
+
 }

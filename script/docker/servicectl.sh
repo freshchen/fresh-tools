@@ -23,8 +23,8 @@ EOF
 
 docker_start(){
     docker_file
-    docker build -t "freshchen/${IMAGE_NAME}:latest" -f Dockerfile ${JAR_PATH}
-    docker run -d --name ${IMAGE_NAME} -p ${PORT}:${PORT} "freshchen/${IMAGE_NAME}:latest"
+    docker build -t ${IMAGE_NAME}:latest -f Dockerfile ${JAR_PATH}
+    docker run -d --name ${IMAGE_NAME} -p ${PORT}:${PORT} ${IMAGE_NAME}:latest
     rm -f Dockerfile
 }
 
