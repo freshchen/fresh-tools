@@ -2,6 +2,7 @@ package freshchen.jcrypto.controller;
 
 import freshchen.jcrypto.pojo.KeyTextResponse;
 import freshchen.jcrypto.pojo.KeyTextRequest;
+import freshchen.jcrypto.pojo.TextResponse;
 import freshchen.jcrypto.service.DecodeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +30,7 @@ public class DecodeController {
         return decodeService.base32(text);
     }
 
-    @PostMapping("/aes/{text}/{key}")
+    @PostMapping("/aes/")
     public KeyTextResponse aes(@RequestBody KeyTextRequest request) {
         return decodeService.aes(request.getText(), request.getKey());
     }
@@ -40,7 +41,7 @@ public class DecodeController {
     }
 
     @PostMapping("/rsa/")
-    public KeyTextResponse rsa(@RequestBody KeyTextRequest request) {
+    public TextResponse rsa(@RequestBody KeyTextRequest request) {
         return decodeService.rsa(request.getText(), request.getKey());
     }
 }

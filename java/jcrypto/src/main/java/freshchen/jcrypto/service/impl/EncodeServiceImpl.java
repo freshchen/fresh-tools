@@ -8,6 +8,7 @@ import cn.hutool.crypto.asymmetric.RSA;
 import cn.hutool.crypto.symmetric.SymmetricAlgorithm;
 import cn.hutool.crypto.symmetric.SymmetricCrypto;
 import freshchen.jcrypto.pojo.KeyTextResponse;
+import freshchen.jcrypto.pojo.TextResponse;
 import freshchen.jcrypto.service.EncodeService;
 import org.springframework.stereotype.Service;
 
@@ -19,12 +20,12 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class EncodeServiceImpl implements EncodeService {
-    public KeyTextResponse base64(String text) {
-        return new KeyTextResponse(Base64.encode(text));
+    public TextResponse base64(String text) {
+        return new TextResponse(Base64.encode(text));
     }
 
-    public KeyTextResponse base32(String text) {
-        return new KeyTextResponse(Base32.encode(text));
+    public TextResponse base32(String text) {
+        return new TextResponse(Base32.encode(text));
     }
 
     @Override
