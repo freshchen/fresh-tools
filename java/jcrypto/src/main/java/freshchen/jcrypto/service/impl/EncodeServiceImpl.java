@@ -56,6 +56,4 @@ public class EncodeServiceImpl implements EncodeService {
         byte[] crypt = rc4.encrypt(text);
         return new KeyTextResponse(key, Base64.encode(crypt));
     }
-
-
 }

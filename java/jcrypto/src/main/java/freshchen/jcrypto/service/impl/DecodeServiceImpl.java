@@ -44,7 +44,7 @@ public class DecodeServiceImpl implements DecodeService {
 
     @Override
     public TextResponse rsa(String text, String key) {
-        RSA rsa = new RSA(null,key);
+        RSA rsa = new RSA(key,null);
         return new TextResponse(rsa.decryptStr(StrUtil.str(text, CharsetUtil.CHARSET_UTF_8), KeyType.PrivateKey));
     }
 
