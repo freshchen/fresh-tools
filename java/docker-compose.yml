@@ -1,0 +1,9 @@
+version: '3'
+services:
+  jcrypto:
+    image:
+      'freshchen/jcrypto:latest'
+    build:
+      './jcrypto/target/'
+    ports:
+      - '8861:8861'

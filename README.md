@@ -24,6 +24,6 @@ openstack-python-client-api.py 常用组件的puthon调用接口
 
 ### java/jcrypto
 
-http://localhost:8991/swagger-ui.html 在线常用的加密解密工具
+http://localhost:8861/swagger-ui.html 在线常用的加密解密工具
 
-docker run -d --name jcrypto -p 8991:8991 "freshchen/jcrypto:latest"
+docker-compose start jcrypto
