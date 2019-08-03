@@ -4,6 +4,6 @@ services:
     image:
       'freshchen/jcrypto:latest'
     build:
-      './jcrypto/target/'
+      './java/jcrypto/target/'
     ports:
       - '8861:8861'

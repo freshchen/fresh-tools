@@ -26,4 +26,4 @@ openstack-python-client-api.py 常用组件的puthon调用接口
 
 http://localhost:8861/swagger-ui.html 在线常用的加密解密工具
 
-docker-compose start jcrypto
+docker-compose up jcrypto -d
