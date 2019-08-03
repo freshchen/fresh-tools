@@ -2,6 +2,8 @@
 
 本仓库用于存放常用工具，脚本，模板。便于提升工作效率的。
 
+docker-compose up -d
+
 ### script/common
 
 脚本常用方法收藏
@@ -22,8 +24,8 @@ host_add_route_to_openstack_instance.sh	主机到虚拟机加路由
 
 openstack-python-client-api.py 常用组件的puthon调用接口
 
+
 ### java/jcrypto
 
 http://localhost:8861/swagger-ui.html 在线常用的加密解密工具
 
-docker-compose up jcrypto -d
