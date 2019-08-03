@@ -107,7 +107,7 @@ generate_postgres_ssl() {
     ${OPENSSL} req -new -key ${key_path} -out ${csr_path} -subj "${subject_info}" || exit 1
     ${OPENSSL} x509 -req -sha256 -days ${EXPIRATION_TIME} -in ${csr_path} -out ${crt_path} -signkey ${key_path} -CAkey ${CA_KEY_PATH} -CA ${CA_CRT_PATH} -CAcreateserial -passin pass:${PASSWORD} || exit 1
     cat ${CA_CRT_PATH} >> ${crt_path}
-    ${OPENSSL} x509 -inform pem -outform der -in ${crt_path} -out ${der_path}
+    ${OPENSSL} x509 -inform pem -outform der -in ${CA_CRT_PATH} -out ${der_path}
 
     for path in ${POSTGRES_SSL_LIST[@]} ; do
         if [[ ! -d "${path}" ]] ; then
