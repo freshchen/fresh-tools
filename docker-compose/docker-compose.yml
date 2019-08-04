@@ -14,7 +14,7 @@ services:
     ports:
       - '3306:3306'
     volumes:
-      - './mysql/:/var/lib/mysql/'
+      - './3pp/mysql/:/var/lib/mysql/'
     environment:
       MYSQL_ROOT_PASSWORD:
         'admin1234!'
@@ -28,10 +28,12 @@ services:
       'vault'
     ports:
       - '8200:8200'
+    volumes:
+      - './3pp/vault/file/:/vault/file/'
+      - './3pp/vault/logs/:/vault/logs/'
     environment:
       - 'VAULT_ADDR=http://0.0.0.0:8200'
       - 'VAULT_API_ADDR=http://0.0.0.0:8200'
-      - 'VAULT_ADDRESS=http://0.0.0.0:8200'
       - 'VAULT_DEV_ROOT_TOKEN_ID=admin1234!'
     cap_add:
       - IPC_LOCK

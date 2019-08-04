@@ -63,7 +63,7 @@
                 <version>1.2.0</version>
                 <configuration>
                     <imageName>freshchen/${project.artifactId}</imageName>
-                    <dockerDirectory>src/main/docker</dockerDirectory>
+                    <dockerDirectory>../../docker-compose/java/jcrypto/</dockerDirectory>
                     <resources>
                         <resource>
                             <targetPath>/</targetPath>
