@@ -1,0 +1,38 @@
+version: '3'
+services:
+  jcrypto:
+    image:
+      'freshchen/jcrypto:latest'
+    ports:
+      - '8861:8861'
+
+  mysql:
+    image:
+      'mysql:latest'
+    container_name:
+      'mysql'
+    ports:
+      - '3306:3306'
+    volumes:
+      - './mysql/:/var/lib/mysql/'
+    environment:
+      MYSQL_ROOT_PASSWORD:
+        'admin1234!'
+    restart:
+      'always'
+
+  vault:
+    image:
+      'vault:latest'
+    container_name:
+      'vault'
+    ports:
+      - '8200:8200'
+    environment:
+      - 'VAULT_ADDR=http://0.0.0.0:8200'
+      - 'VAULT_API_ADDR=http://0.0.0.0:8200'
+      - 'VAULT_ADDRESS=http://0.0.0.0:8200'
+      - 'VAULT_DEV_ROOT_TOKEN_ID=admin1234!'
+    cap_add:
+      - IPC_LOCK
+
