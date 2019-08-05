@@ -2,6 +2,7 @@
 
 
 prepare(){
+    docker rmi $(docker images -f "dangling=true" -q)
     PORT=$(cat application.* | grep -v "^#" | grep -w 'port' | sed 's/ //g' | cut -d '=' -f2)
     JAR_PATH="../../../target/"
     JAR_NAME=$(ls ${JAR_PATH} | grep '.*.jar$')

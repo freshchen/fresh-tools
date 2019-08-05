@@ -1,31 +1,30 @@
 version: '3'
 services:
-  jcrypto:
-    image:
-      'freshchen/jcrypto:latest'
-    ports:
-      - '8861:8861'
-
   mysql:
-    image:
-      'mysql:latest'
-    container_name:
-      'mysql'
+    image: 'mysql:latest'
+    container_name: 'mysql'
     ports:
       - '3306:3306'
     volumes:
       - './3pp/mysql/:/var/lib/mysql/'
     environment:
-      MYSQL_ROOT_PASSWORD:
-        'admin1234!'
-    restart:
-      'always'
+      MYSQL_ROOT_PASSWORD: 'admin1234!'
+    restart: 'always'
 
+  eureka-server:
+    image: 'freshchen/eureka-server:latest'
+    ports:
+      - '8860:8860'
+
+  jcrypto:
+    image: 'freshchen/jcrypto:latest'
+    ports:
+      - '8861:8861'
+
+  # 密钥证书token安全存放
   vault:
-    image:
-      'vault:latest'
-    container_name:
-      'vault'
+    image: 'vault:latest'
+    container_name: 'vault'
     ports:
       - '8200:8200'
     volumes:
