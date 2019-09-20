@@ -6,10 +6,7 @@ services:
     container_name: 'tools'
     ports:
       - '1994:1994'
-    deploy:
-      replicas: 2
-      restart_policy:
-        condition: on-failure
+    restart: 'always'
 
   # 数据库
   mysql:
