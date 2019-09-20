@@ -1,5 +1,16 @@
 version: '3'
 services:
+  # Java工具
+  tools:
+    image: 'freshchen/java-tools:latest'
+    container_name: 'tools'
+    ports:
+      - '1994:1994'
+    deploy:
+      replicas: 2
+      restart_policy:
+        condition: on-failure
+
   # 数据库
   mysql:
     image: 'mysql:latest'
