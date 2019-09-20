@@ -8,7 +8,11 @@ docker-compose up -d tools (使用docker-compose部署常用工具)
 
 ### java-tools
 
-http://localhost:1994/swagger-ui.html 在线常用的加密解密工具
+http://localhost:1994/swagger-ui.html
+
+提高生成力小工具
+
+- 加密解密摘要
 
 ### script/common
 
