@@ -1,5 +1,6 @@
 version: '3'
 services:
+  # 数据库
   mysql:
     image: 'mysql:latest'
     container_name: 'mysql'
@@ -10,16 +11,6 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: 'admin1234!'
     restart: 'always'
-
-  eureka-server:
-    image: 'freshchen/eureka-server:latest'
-    ports:
-      - '8860:8860'
-
-  jcrypto:
-    image: 'freshchen/jcrypto:latest'
-    ports:
-      - '8861:8861'
 
   # 密钥证书token安全存放
   vault:

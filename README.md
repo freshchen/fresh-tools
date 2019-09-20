@@ -8,7 +8,7 @@ docker-compose up -d <service_name> (使用docker-compose部署常用工具)
 
 ### java/jcrypto
 
-http://localhost:8861/swagger-ui.html 在线常用的加密解密工具
+http://localhost:1994/swagger-ui.html 在线常用的加密解密工具
 
 ### script/common
 
