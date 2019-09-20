@@ -71,9 +71,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <outputDirectory>${basedir}/src/main/resources/</outputDirectory>
-                </configuration>
             </plugin>
         </plugins>
     </build>
