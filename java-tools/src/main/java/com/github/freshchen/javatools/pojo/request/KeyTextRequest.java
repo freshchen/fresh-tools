@@ -1,4 +1,4 @@
-package com.github.freshchen.javatools.pojo;
+package com.github.freshchen.javatools.pojo.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

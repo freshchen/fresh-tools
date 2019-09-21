@@ -1,7 +1,7 @@
 package com.github.freshchen.javatools.service.impl;
 
 import cn.hutool.crypto.digest.DigestUtil;
-import com.github.freshchen.javatools.pojo.TextResponse;
+import com.github.freshchen.javatools.pojo.response.TextResponse;
 import com.github.freshchen.javatools.service.DigestService;
 import org.springframework.stereotype.Service;
 

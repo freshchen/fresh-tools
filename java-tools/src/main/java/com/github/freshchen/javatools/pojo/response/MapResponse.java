@@ -1,4 +1,4 @@
-package com.github.freshchen.javatools.pojo;
+package com.github.freshchen.javatools.pojo.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -6,10 +6,11 @@ import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
+import java.util.Map;
 
 /**
  * @program: fresh-tools
- * @Date: 2019/8/1 0:47
+ * @Date: 2019/9/21 10:41
  * @Author: Ling Chen
  * @Description:
  */
@@ -17,7 +18,6 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class TextRequest implements Serializable {
-    private static final long serialVersionUID = -6420099641133737028L;
-    private String text;
+public class MapResponse<E, F> implements Serializable {
+    private Map <E, F> map;
 }

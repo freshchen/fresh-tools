@@ -1,7 +1,7 @@
 package com.github.freshchen.javatools.service;
 
-import com.github.freshchen.javatools.pojo.KeyTextResponse;
-import com.github.freshchen.javatools.pojo.TextResponse;
+import com.github.freshchen.javatools.pojo.response.KeyTextResponse;
+import com.github.freshchen.javatools.pojo.response.TextResponse;
 import com.github.freshchen.javatools.service.impl.DecodeServiceImpl;
 import com.github.freshchen.javatools.service.impl.EncodeServiceImpl;
 import org.junit.Assert;

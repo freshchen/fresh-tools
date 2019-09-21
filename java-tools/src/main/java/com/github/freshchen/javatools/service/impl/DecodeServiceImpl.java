@@ -9,7 +9,7 @@ import cn.hutool.crypto.asymmetric.RSA;
 import cn.hutool.crypto.symmetric.RC4;
 import cn.hutool.crypto.symmetric.SymmetricAlgorithm;
 import cn.hutool.crypto.symmetric.SymmetricCrypto;
-import com.github.freshchen.javatools.pojo.TextResponse;
+import com.github.freshchen.javatools.pojo.response.TextResponse;
 import com.github.freshchen.javatools.service.DecodeService;
 import org.springframework.stereotype.Service;
 

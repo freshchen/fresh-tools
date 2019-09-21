@@ -1,6 +1,6 @@
 package com.github.freshchen.javatools.service;
 
-import com.github.freshchen.javatools.pojo.TextResponse;
+import com.github.freshchen.javatools.pojo.response.TextResponse;
 
 /**
  * @program: fresh-tools

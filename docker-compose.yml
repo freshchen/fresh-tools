@@ -8,31 +8,31 @@ services:
       - '1994:1994'
     restart: 'always'
 
-  # 数据库
-  mysql:
-    image: 'mysql:latest'
-    container_name: 'mysql'
-    ports:
-      - '3306:3306'
-    volumes:
-      - './3pp/mysql/:/var/lib/mysql/'
-    environment:
-      MYSQL_ROOT_PASSWORD: 'admin1234!'
-    restart: 'always'
+#  # 数据库
+#  mysql:
+#    image: 'mysql:latest'
+#    container_name: 'mysql'
+#    ports:
+#      - '3306:3306'
+#    volumes:
+#      - './3pp/mysql/:/var/lib/mysql/'
+#    environment:
+#      MYSQL_ROOT_PASSWORD: 'admin1234!'
+#    restart: 'always'
 
-  # 密钥证书token安全存放
-  vault:
-    image: 'vault:latest'
-    container_name: 'vault'
-    ports:
-      - '8200:8200'
-    volumes:
-      - './3pp/vault/file/:/vault/file/'
-      - './3pp/vault/logs/:/vault/logs/'
-    environment:
-      - 'VAULT_ADDR=http://0.0.0.0:8200'
-      - 'VAULT_API_ADDR=http://0.0.0.0:8200'
-      - 'VAULT_DEV_ROOT_TOKEN_ID=admin1234!'
-    cap_add:
-      - IPC_LOCK
+#  # 密钥证书token安全存放
+#  vault:
+#    image: 'vault:latest'
+#    container_name: 'vault'
+#    ports:
+#      - '8200:8200'
+#    volumes:
+#      - './3pp/vault/file/:/vault/file/'
+#      - './3pp/vault/logs/:/vault/logs/'
+#    environment:
+#      - 'VAULT_ADDR=http://0.0.0.0:8200'
+#      - 'VAULT_API_ADDR=http://0.0.0.0:8200'
+#      - 'VAULT_DEV_ROOT_TOKEN_ID=admin1234!'
+#    cap_add:
+#      - IPC_LOCK
 
