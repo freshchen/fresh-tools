@@ -40,7 +40,18 @@ public class MyUtils {
     }
 
     public Map getWeather(String cityId) throws IOException {
-        URL url = new URL(StrConstants.WEATHER_URL.getValue() + cityId + ".html");
+        String url = StrConstants.WEATHER_URL.getValue() + cityId + ".html";
+        String datas = readURLData(url);
+        Map weatherMap = new Gson().fromJson(datas, Map.class);
+        Map map = (Map) weatherMap.get("weatherinfo");
+        map.remove("img1");
+        map.remove("img2");
+        return weatherMap;
+    }
+
+
+    private String readURLData(String strUrl) throws IOException {
+        URL url = new URL(strUrl);
         URLConnection connectionData = url.openConnection();
         connectionData.setConnectTimeout(1000);
         BufferedReader br = new BufferedReader(new InputStreamReader(
@@ -49,12 +60,7 @@ public class MyUtils {
         String line = null;
         while ((line = br.readLine()) != null)
             sb.append(line);
-        String datas = sb.toString();
-        Map weatherMap = new Gson().fromJson(datas, Map.class);
-        Map map = (Map) weatherMap.get("weatherinfo");
-        map.remove("img1");
-        map.remove("img2");
-        return weatherMap;
+        return sb.toString();
     }
 
 }
