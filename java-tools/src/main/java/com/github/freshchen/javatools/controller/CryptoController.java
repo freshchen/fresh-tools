@@ -1,8 +1,8 @@
 package com.github.freshchen.javatools.controller;
 
 import com.github.freshchen.javatools.pojo.request.KeyTextRequest;
-import com.github.freshchen.javatools.pojo.response.KeyTextResponse;
 import com.github.freshchen.javatools.pojo.request.TextRequest;
+import com.github.freshchen.javatools.pojo.response.KeyTextResponse;
 import com.github.freshchen.javatools.pojo.response.TextResponse;
 import com.github.freshchen.javatools.service.DecodeService;
 import com.github.freshchen.javatools.service.DigestService;

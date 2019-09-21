@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
+
 /**
  * @program: fresh-tools
  * @Date: 2019/9/21 11:54
@@ -22,18 +24,29 @@ public class LifeController {
     @Autowired
     private LifeService lifeService;
 
-    @PostMapping("/time/now/")
+    @PostMapping("/time/")
     public MapResponse getDate() {
         return lifeService.getDate();
     }
 
     /**
      * stamp can be get from System.currentTimeMillis()
+     *
      * @param request
      * @return
      */
     @PostMapping("/time/stamp/")
     public MapResponse getDate(@RequestBody TextRequest request) {
         return lifeService.getDate(Long.valueOf(request.getText()));
+    }
+
+    @PostMapping("/weather/")
+    public MapResponse getWeather() throws IOException {
+        return lifeService.getWeather();
+    }
+
+    @PostMapping("/weather/cityId/")
+    public MapResponse getWeather(@RequestBody TextRequest request) throws IOException {
+        return lifeService.getWeather(request.getText());
     }
 }
