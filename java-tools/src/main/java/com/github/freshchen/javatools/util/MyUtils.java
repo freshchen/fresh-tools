@@ -13,7 +13,7 @@ import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -29,7 +29,7 @@ public class MyUtils {
 
     public Map <String, String> getDate(long timestamp) {
         Instant instant = Instant.ofEpochMilli(timestamp);
-        Map <String, String> times = new HashMap <>();
+        Map <String, String> times = new LinkedHashMap <>();
         times.put("System Defult " + ZoneId.systemDefault().getId(), ZonedDateTime.ofInstant(instant, ZoneId.systemDefault()).format(timeFormatter));
         times.put("UTC", ZonedDateTime.ofInstant(instant, ZoneId.of("UTC")).format(timeFormatter));
         times.put("CTT Asia/Shanghai", ZonedDateTime.ofInstant(instant, ZoneId.of("Asia/Shanghai")).format(timeFormatter));

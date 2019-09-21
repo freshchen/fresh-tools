@@ -27,7 +27,7 @@ public class MyUtilsTest {
     }
 
     @Test
-    public void getTodayWeather() throws IOException {
+    public void getWeather() throws IOException {
         System.out.println(utils.getWeather("101020900"));
     }
 
