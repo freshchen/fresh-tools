@@ -24,12 +24,12 @@ public class MyUtils {
         String defaultTime = ZonedDateTime.ofInstant(instant, ZoneId.systemDefault()).format(timeFormatter);
         String utc = ZonedDateTime.ofInstant(instant, ZoneId.of("UTC")).format(timeFormatter);
         String shangHai = ZonedDateTime.ofInstant(instant, ZoneId.of("Asia/Shanghai")).format(timeFormatter);
-        String chicago = ZonedDateTime.ofInstant(instant, ZoneId.of("Asia/Shanghai")).format(timeFormatter);
+        String chicago = ZonedDateTime.ofInstant(instant, ZoneId.of("America/Chicago")).format(timeFormatter);
         Map <String, String> times = new HashMap <>();
-        times.put("System Defult-" + ZoneId.systemDefault().getId(), defaultTime);
+        times.put("System Defult " + ZoneId.systemDefault().getId(), defaultTime);
         times.put("UTC", utc);
-        times.put("CTT-Asia/Shanghai", shangHai);
-        times.put("CST-America/Chicago", chicago);
+        times.put("CTT Asia/Shanghai", shangHai);
+        times.put("CST America/Chicago", chicago);
         return times;
     }
 

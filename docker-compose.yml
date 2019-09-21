@@ -4,6 +4,8 @@ services:
   tools:
     image: 'freshchen/java-tools:latest'
     container_name: 'tools'
+    environment:
+      TZ: 'Asia/Shanghai'
     ports:
       - '1994:1994'
     restart: 'always'
