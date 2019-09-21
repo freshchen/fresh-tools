@@ -11,12 +11,17 @@ import lombok.Getter;
 @Getter
 public enum StrConstants {
     WEATHER_URL("http://www.weather.com.cn/data/cityinfo/"),
+    STOCK_URL("http://api.money.126.net/data/feed/"),
     UTF8("UTF-8"),
     SONG_JIANG("101020900"),
     SHANG_HAI("101020100"),
     TAI_XING("101191203"),
     ZHOU_SHAN("101211101"),
     BEI_JING("101010100"),
+    SH_STOCK("000001"),
+    SH_STOCK_A("000002"),
+    SZ_STOCK("399001"),
+    SZ_STOCK_NEW("399006")
     ;
 
     private String value;

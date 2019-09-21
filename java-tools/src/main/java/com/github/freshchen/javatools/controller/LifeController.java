@@ -1,5 +1,6 @@
 package com.github.freshchen.javatools.controller;
 
+import com.github.freshchen.javatools.pojo.request.OneRequest;
 import com.github.freshchen.javatools.pojo.request.TextRequest;
 import com.github.freshchen.javatools.pojo.response.MapResponse;
 import com.github.freshchen.javatools.service.LifeService;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * @program: fresh-tools
@@ -48,5 +50,15 @@ public class LifeController {
     @PostMapping("/weather/cityId/")
     public MapResponse getWeather(@RequestBody TextRequest request) throws IOException {
         return lifeService.getWeather(request.getText());
+    }
+
+    @PostMapping("/stock/id/")
+    MapResponse getStock(@RequestBody OneRequest<List<String>> request) throws IOException {
+        return lifeService.getStock(request.getElement());
+    }
+
+    @PostMapping("/stock/")
+    MapResponse getStock() throws IOException {
+        return lifeService.getStock();
     }
 }

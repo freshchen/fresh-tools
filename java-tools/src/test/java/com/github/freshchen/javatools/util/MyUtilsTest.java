@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 /**
  * @program: fresh-tools
@@ -28,5 +29,10 @@ public class MyUtilsTest {
     @Test
     public void getTodayWeather() throws IOException {
         System.out.println(utils.getWeather("101020900"));
+    }
+
+    @Test
+    public void getStockInfo() throws IOException {
+        System.out.println(utils.getStockInfo(Arrays.asList("600900","300530")));
     }
 }

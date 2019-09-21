@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -48,5 +50,20 @@ public class LifeServiceImpl implements LifeService {
         weather.put("舟山", utils.getWeather(StrConstants.ZHOU_SHAN.getValue()));
         weather.put("松江", utils.getWeather(StrConstants.SHANG_HAI.getValue()));
         return new MapResponse <String, Map>(weather);
+    }
+
+    @Override
+    public MapResponse getStock(List <String> list) throws IOException {
+        return new MapResponse(utils.getStockInfo(list));
+    }
+
+    @Override
+    public MapResponse getStock() throws IOException {
+        return new MapResponse(utils.getStockInfo(Arrays.asList(
+                StrConstants.SH_STOCK.getValue(),
+                StrConstants.SH_STOCK_A.getValue(),
+                StrConstants.SZ_STOCK.getValue(),
+                StrConstants.SZ_STOCK_NEW.getValue()
+        )));
     }
 }

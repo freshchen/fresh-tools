@@ -3,6 +3,7 @@ package com.github.freshchen.javatools.service;
 import com.github.freshchen.javatools.pojo.response.MapResponse;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * @program: fresh-tools
@@ -19,4 +20,8 @@ public interface LifeService {
     MapResponse getWeather(String cityId) throws IOException;
 
     MapResponse getWeather() throws IOException;
+
+    MapResponse getStock(List <String> list) throws IOException;
+
+    MapResponse getStock() throws IOException;
 }

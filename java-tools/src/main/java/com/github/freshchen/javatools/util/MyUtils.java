@@ -14,6 +14,7 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -49,11 +50,29 @@ public class MyUtils {
         return weatherMap;
     }
 
+    public Map getStockInfo(List <String> list) throws IOException {
+        StringBuffer url = new StringBuffer().append(StrConstants.STOCK_URL.getValue());
+        list.forEach(s -> {
+            String head = Integer.parseInt(String.valueOf(s.charAt(0))) > 4 ? "0" : "1";
+            head = StrConstants.SH_STOCK.getValue().equals(s) || StrConstants.SH_STOCK_A.getValue().equals(s)
+                    ? "0" : head;
+            url.append(head).append(s).append("%2C");
+        });
+        String datas = readURLData(url.append("money.api").toString());
+        datas = datas.substring(datas.indexOf("(") + 1, datas.lastIndexOf(")"));
+        Map <String, Map <String, Object>> stockMap = new Gson().fromJson(datas, Map.class);
+        stockMap.forEach((k, v) -> {
+            v.keySet().removeIf(key -> key.startsWith("ask") || key.startsWith("bid"));
+        });
+
+        return stockMap;
+    }
+
 
     private String readURLData(String strUrl) throws IOException {
         URL url = new URL(strUrl);
         URLConnection connectionData = url.openConnection();
-        connectionData.setConnectTimeout(1000);
+        connectionData.setConnectTimeout(2000);
         BufferedReader br = new BufferedReader(new InputStreamReader(
                 connectionData.getInputStream(), StrConstants.UTF8.getValue()));
         StringBuilder sb = new StringBuilder();
