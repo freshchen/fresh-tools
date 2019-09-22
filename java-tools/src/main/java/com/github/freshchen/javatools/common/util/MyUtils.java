@@ -80,7 +80,7 @@ public class MyUtils {
     private String readURLData(String strUrl) throws IOException {
         URL url = new URL(strUrl);
         URLConnection connectionData = url.openConnection();
-        connectionData.setConnectTimeout(2000);
+        connectionData.setConnectTimeout(10000);
         BufferedReader br = new BufferedReader(new InputStreamReader(
                 connectionData.getInputStream(), StrConstants.UTF8.getValue()));
         StringBuilder sb = new StringBuilder();
