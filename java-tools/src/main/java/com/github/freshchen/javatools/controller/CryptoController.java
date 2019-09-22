@@ -7,6 +7,7 @@ import com.github.freshchen.javatools.pojo.response.TextResponse;
 import com.github.freshchen.javatools.service.DecodeService;
 import com.github.freshchen.javatools.service.DigestService;
 import com.github.freshchen.javatools.service.EncodeService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/crypto/")
+@Api(value = "/crypto/", tags = "加密解密工具")
 public class CryptoController {
 
     @Autowired

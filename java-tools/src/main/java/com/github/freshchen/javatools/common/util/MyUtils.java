@@ -1,6 +1,7 @@
-package com.github.freshchen.javatools.util;
+package com.github.freshchen.javatools.common.util;
 
 import com.github.freshchen.javatools.common.constant.StrConstants;
+import com.github.freshchen.javatools.common.structure.VVVNode;
 import com.google.gson.Gson;
 import org.springframework.stereotype.Component;
 
@@ -13,9 +14,7 @@ import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @program: fresh-tools
@@ -25,7 +24,17 @@ import java.util.Map;
  */
 @Component
 public class MyUtils {
+
+    private static final Comparator <VVVNode <String, Integer, Integer>> comparatorMapByValueAsc = (node1, node2) -> {
+        return node1.getV2() - node2.getV2();
+    };
+
+    private static final Comparator <VVVNode <String, Integer, Integer>> comparatorMapByValueDes = (node1, node2) -> {
+        return node2.getV3() - node1.getV3();
+    };
+
     private DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    private Random random = new Random();
 
     public Map <String, String> getDate(long timestamp) {
         Instant instant = Instant.ofEpochMilli(timestamp);
@@ -68,7 +77,6 @@ public class MyUtils {
         return stockMap;
     }
 
-
     private String readURLData(String strUrl) throws IOException {
         URL url = new URL(strUrl);
         URLConnection connectionData = url.openConnection();
@@ -80,6 +88,71 @@ public class MyUtils {
         while ((line = br.readLine()) != null)
             sb.append(line);
         return sb.toString();
+    }
+
+    public String doubleColorBall() {
+        Set <Integer> redBalls = new TreeSet <>(Comparator.naturalOrder());
+        while (redBalls.size() < 6) {
+            redBalls.add(random.nextInt(33) + 1);
+        }
+        StringBuffer buffer = new StringBuffer().append("Red: ");
+        redBalls.forEach(num -> {
+            buffer.append(num + " ");
+        });
+        buffer.append("Blue: " + Integer.valueOf(random.nextInt(16) + 1));
+        return buffer.toString();
+    }
+
+    public String superLotto() {
+        Set <Integer> redBalls = new TreeSet <>(Comparator.naturalOrder());
+        while (redBalls.size() < 5) {
+            redBalls.add(random.nextInt(35) + 1);
+        }
+        StringBuffer buffer = new StringBuffer().append("Red: ");
+        redBalls.forEach(num -> {
+            buffer.append(num + " ");
+        });
+        Set <Integer> blueBalls = new TreeSet <>(Comparator.naturalOrder());
+        buffer.append("Blue: ");
+        while (blueBalls.size() < 2) {
+            blueBalls.add(random.nextInt(12) + 1);
+        }
+        blueBalls.forEach(num -> {
+            buffer.append(num + " ");
+        });
+        return buffer.toString();
+    }
+
+    /**
+     * v1 项目名 v2 成本 v3 利益
+     *
+     * @param list
+     * @param init
+     * @param times
+     * @return
+     */
+    public String greedyPlan(List <VVVNode <String, Integer, Integer>> list, int init, int times) {
+        StringBuffer buffer = new StringBuffer().append("初始资源：").append(Integer.valueOf(init)).append(" ")
+                .append("执行次数：").append(Integer.valueOf(times)).append(" ")
+                .append("推荐计划： ").append(" ");
+        PriorityQueue <VVVNode <String, Integer, Integer>> cost = new PriorityQueue <>(comparatorMapByValueAsc);
+        PriorityQueue <VVVNode <String, Integer, Integer>> profit = new PriorityQueue <>(comparatorMapByValueDes);
+        list.stream().forEach(node -> {
+            cost.add(node);
+        });
+        for (int i = 0; i < times; i++) {
+            while (!cost.isEmpty() && cost.peek().getV2() <= init) {
+                profit.add(cost.poll());
+            }
+            if (profit.isEmpty()) {
+                break;
+            }
+            VVVNode <String, Integer, Integer> curr = profit.poll();
+            init += curr.getV3();
+            buffer.append("任务").append(Integer.valueOf(i + 1)).append("：").append(curr.getV1()).append(" ");
+        }
+        buffer.append("最终资源：").append(Integer.valueOf(init));
+        return buffer.toString();
     }
 
 }

@@ -1,6 +1,8 @@
 package com.github.freshchen.javatools.service;
 
+import com.github.freshchen.javatools.common.structure.VVVNode;
 import com.github.freshchen.javatools.pojo.response.MapResponse;
+import com.github.freshchen.javatools.pojo.response.OneResponse;
 
 import java.io.IOException;
 import java.util.List;
@@ -24,4 +26,11 @@ public interface LifeService {
     MapResponse getStock(List <String> list) throws IOException;
 
     MapResponse getStock() throws IOException;
+
+    OneResponse <String> doubleColorBall();
+
+    OneResponse <String> superLotto();
+
+    OneResponse <String> greedyPlan(List <VVVNode <String, Integer, Integer>> list, int init, int times);
+
 }

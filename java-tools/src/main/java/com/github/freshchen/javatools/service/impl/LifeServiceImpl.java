@@ -1,9 +1,11 @@
 package com.github.freshchen.javatools.service.impl;
 
 import com.github.freshchen.javatools.common.constant.StrConstants;
+import com.github.freshchen.javatools.common.structure.VVVNode;
 import com.github.freshchen.javatools.pojo.response.MapResponse;
+import com.github.freshchen.javatools.pojo.response.OneResponse;
 import com.github.freshchen.javatools.service.LifeService;
-import com.github.freshchen.javatools.util.MyUtils;
+import com.github.freshchen.javatools.common.util.MyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -65,5 +67,20 @@ public class LifeServiceImpl implements LifeService {
                 StrConstants.SZ_STOCK.getValue(),
                 StrConstants.SZ_STOCK_NEW.getValue()
         )));
+    }
+
+    @Override
+    public OneResponse <String> doubleColorBall() {
+        return new OneResponse <>(utils.doubleColorBall());
+    }
+
+    @Override
+    public OneResponse <String> superLotto() {
+        return new OneResponse <>(utils.superLotto());
+    }
+
+    @Override
+    public OneResponse <String> greedyPlan(List <VVVNode <String, Integer, Integer>> list, int init, int times) {
+        return new OneResponse <>(utils.greedyPlan(list, init, times));
     }
 }

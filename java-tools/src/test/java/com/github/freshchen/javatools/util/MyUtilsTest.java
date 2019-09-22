@@ -1,5 +1,6 @@
 package com.github.freshchen.javatools.util;
 
+import com.github.freshchen.javatools.common.util.MyUtils;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -34,5 +35,15 @@ public class MyUtilsTest {
     @Test
     public void getStockInfo() throws IOException {
         System.out.println(utils.getStockInfo(Arrays.asList("600900","300530")));
+    }
+
+    @Test
+    public void doubleColorBall() {
+        System.out.println(utils.doubleColorBall());
+    }
+
+    @Test
+    public void superLotto() {
+        System.out.println(utils.superLotto());
     }
 }

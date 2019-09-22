@@ -22,7 +22,7 @@ public class Swagger2Config {
     @Bean
     public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .apiInfo(new ApiInfoBuilder().title("Personal Tools").description("Nice to meet you!").version("1.0").build())
+                .apiInfo(new ApiInfoBuilder().title("Personal Tools").description("Have a nice day!").version("1.0").build())
                 .select()
                 .apis(RequestHandlerSelectors.any())
                 .paths(PathSelectors.any())
