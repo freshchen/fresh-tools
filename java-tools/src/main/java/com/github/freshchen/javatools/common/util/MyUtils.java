@@ -134,7 +134,7 @@ public class MyUtils {
     public String greedyPlan(List <VVVNode <String, Integer, Integer>> list, int init, int times) {
         StringBuffer buffer = new StringBuffer().append("初始资源：").append(Integer.valueOf(init)).append(" ")
                 .append("执行次数：").append(Integer.valueOf(times)).append(" ")
-                .append("推荐计划： ").append(" ");
+                .append("推荐计划：").append(" ");
         PriorityQueue <VVVNode <String, Integer, Integer>> cost = new PriorityQueue <>(comparatorMapByValueAsc);
         PriorityQueue <VVVNode <String, Integer, Integer>> profit = new PriorityQueue <>(comparatorMapByValueDes);
         list.stream().forEach(node -> {
