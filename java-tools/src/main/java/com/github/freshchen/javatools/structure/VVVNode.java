@@ -1,4 +1,4 @@
-package com.github.freshchen.javatools.common.structure;
+package com.github.freshchen.javatools.structure;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

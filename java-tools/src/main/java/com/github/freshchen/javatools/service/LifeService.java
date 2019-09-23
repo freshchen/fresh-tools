@@ -1,6 +1,6 @@
 package com.github.freshchen.javatools.service;
 
-import com.github.freshchen.javatools.common.structure.VVVNode;
+import com.github.freshchen.javatools.structure.VVVNode;
 import com.github.freshchen.javatools.pojo.response.MapResponse;
 import com.github.freshchen.javatools.pojo.response.OneResponse;
 

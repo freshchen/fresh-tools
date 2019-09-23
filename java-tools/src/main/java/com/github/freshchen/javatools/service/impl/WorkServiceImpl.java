@@ -1,7 +1,7 @@
 package com.github.freshchen.javatools.service.impl;
 
-import com.github.freshchen.javatools.common.structure.VVVNode;
-import com.github.freshchen.javatools.common.util.MyUtils;
+import com.github.freshchen.javatools.structure.VVVNode;
+import com.github.freshchen.javatools.util.MyUtils;
 import com.github.freshchen.javatools.pojo.response.OneResponse;
 import com.github.freshchen.javatools.service.WorkService;
 import org.springframework.beans.factory.annotation.Autowired;

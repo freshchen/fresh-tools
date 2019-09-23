@@ -1,7 +1,7 @@
-package com.github.freshchen.javatools.common.util;
+package com.github.freshchen.javatools.util;
 
-import com.github.freshchen.javatools.common.constant.StrConstants;
-import com.github.freshchen.javatools.common.structure.VVVNode;
+import com.github.freshchen.javatools.constant.StrConstants;
+import com.github.freshchen.javatools.structure.VVVNode;
 import com.google.gson.Gson;
 import org.springframework.stereotype.Component;
 

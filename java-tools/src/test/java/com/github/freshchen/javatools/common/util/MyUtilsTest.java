@@ -1,6 +1,7 @@
 package com.github.freshchen.javatools.common.util;
 
-import com.github.freshchen.javatools.common.structure.VVVNode;
+import com.github.freshchen.javatools.structure.VVVNode;
+import com.github.freshchen.javatools.util.MyUtils;
 import org.junit.Before;
 import org.junit.Test;
 
