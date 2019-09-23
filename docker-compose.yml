@@ -4,11 +4,23 @@ services:
   tools:
     image: 'freshchen/java-tools:latest'
     container_name: 'tools'
+    restart: 'always'
     environment:
       TZ: 'Asia/Shanghai'
     ports:
       - '1994:1994'
+
+  redis:
+    image: 'redis:5-alpine'
+    container_name: 'redis'
     restart: 'always'
+    ports:
+      - '6379:6379'
+      - '/root/resour'
+    volumes:
+      - './resource/redis/data/:/data/'
+    command:
+      redis-server
 
 #  # 数据库
 #  mysql:
