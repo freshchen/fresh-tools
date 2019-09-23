@@ -6,14 +6,11 @@ import com.github.freshchen.javatools.pojo.response.MapResponse;
 import com.github.freshchen.javatools.pojo.response.OneResponse;
 import com.github.freshchen.javatools.service.LifeService;
 import com.github.freshchen.javatools.common.util.MyUtils;
+import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * @program: fresh-tools
@@ -45,7 +42,7 @@ public class LifeServiceImpl implements LifeService {
 
     @Override
     public MapResponse getWeather() throws IOException {
-        Map weather = new HashMap();
+        Map weather = new LinkedHashMap();
         weather.put("上海", utils.getWeather(StrConstants.SHANG_HAI.getValue()));
         weather.put("北京", utils.getWeather(StrConstants.BEI_JING.getValue()));
         weather.put("泰兴", utils.getWeather(StrConstants.TAI_XING.getValue()));
