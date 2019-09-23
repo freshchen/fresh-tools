@@ -1,5 +1,6 @@
 package com.github.freshchen.javatools.config;
 
+import com.google.common.base.Predicates;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -25,7 +26,8 @@ public class Swagger2Config {
                 .apiInfo(new ApiInfoBuilder().title("Personal Tools").description("Have a nice day!").version("1.0").build())
                 .select()
                 .apis(RequestHandlerSelectors.any())
-                .paths(PathSelectors.any())
+                .paths(Predicates.not(PathSelectors.regex("/error.*")))//错误路径不监控
+                .paths(PathSelectors.regex("/.*"))// 对根下所有路径进行监控
                 .build();
     }
 }
