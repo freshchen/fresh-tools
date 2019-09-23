@@ -1,4 +1,4 @@
-package com.github.freshchen.javatools.common.exception;
+package com.github.freshchen.javatools.exception;
 
 /**
  * @program: fresh-ad-system

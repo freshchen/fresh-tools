@@ -1,4 +1,4 @@
-package com.github.freshchen.javatools.common.constant;
+package com.github.freshchen.javatools.constant;
 
 import lombok.Getter;
 
