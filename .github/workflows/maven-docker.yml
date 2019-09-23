@@ -21,7 +21,5 @@ jobs:
       run: docker login -u freshchen -p ${{ secrets.DOCKER_HUB_TOKEN }}
     - name: docker push
       run: docker push freshchen/java-tools:latest
-    - name: Install Sshpass
-      run: apt install sshpass
     - name: Restart Service
       run: sshpass -p ${{ secrets.PWD }} ssh -o StrictHostKeyChecking=no root@${{ secrets.HOST }} ${{ secrets.DOCKER_COMPOSE_CMD }}
