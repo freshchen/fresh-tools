@@ -59,7 +59,7 @@ public class LifeController {
 
     @PostMapping("/stock/id/")
     MapResponse getStock(@RequestBody OneRequest <List <String>> request) throws IOException {
-        return lifeService.getStock(request.getElement());
+        return lifeService.getStock(request.getEl());
     }
 
     @GetMapping("/lottery/doubleColorBall")

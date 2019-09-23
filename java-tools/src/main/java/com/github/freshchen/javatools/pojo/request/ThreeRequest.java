@@ -20,7 +20,7 @@ import java.io.Serializable;
 public class ThreeRequest<E, F, G> implements Serializable {
 
     private static final long serialVersionUID = 4020632860503887561L;
-    private E element1;
-    private F element2;
-    private G element3;
+    private E el1;
+    private F el2;
+    private G el3;
 }

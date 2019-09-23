@@ -20,5 +20,5 @@ import java.io.Serializable;
 public class OneRequest<E> implements Serializable {
 
     private static final long serialVersionUID = 4020632860503887561L;
-    private E element;
+    private E el;
 }
