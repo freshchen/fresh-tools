@@ -8,7 +8,7 @@ RUN apt-get update \
           && apt-get clean \
           && apt-get autoclean \
           && rm -rf /var/lib/apt/lists/* /var/tmp/*
-ADD java-tools-0.0.1-SNAPSHOT.jar app.jar
+ADD java-tools-0.0.1.jar app.jar
 RUN bash -c 'touch /app.jar'
 EXPOSE 1994
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]

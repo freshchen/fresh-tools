@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.github.freshchen</groupId>
     <artifactId>java-tools</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>java-tools</name>
     <description>Demo project for Spring Boot</description>
 
@@ -88,5 +88,13 @@
             </plugin>
         </plugins>
     </build>
+
+    <distributionManagement>
+        <repository>
+            <id>com.github.freshchen</id>
+            <name>java-tools</name>
+            <url>https://maven.pkg.github.com/freshchen/fresh-tools</url>
+        </repository>
+    </distributionManagement>
 
 </project>
