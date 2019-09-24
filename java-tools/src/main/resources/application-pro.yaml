@@ -2,6 +2,6 @@ server:
   port: 1994
 spring:
   redis:
-    host: localhost
+    host: redis
     database: 0
     port: 6379

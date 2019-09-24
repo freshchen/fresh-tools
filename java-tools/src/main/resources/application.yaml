@@ -1,7 +1,3 @@
-server:
-  port: 1994
 spring:
-  redis:
-    host: redis
-    database: 0
-    port: 6379
+  profiles:
+    active: dev

@@ -11,4 +11,4 @@ RUN apt-get update \
 ADD java-tools-0.0.1.jar app.jar
 RUN bash -c 'touch /app.jar'
 EXPOSE 1994
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar","--spring.profiles.active=pro"]
