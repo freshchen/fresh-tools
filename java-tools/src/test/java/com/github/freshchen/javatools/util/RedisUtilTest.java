@@ -63,7 +63,7 @@ public class RedisUtilTest {
     @Test
     public void setWithTime() throws IOException, InterruptedException {
         Assert.assertEquals(StrConstants.SUCCESS.getValue(), util.set("name", "wang", 100));
-        Thread.sleep(100);
+        Thread.sleep(1000);
         Assert.assertNotEquals("wang", util.get("name"));
     }
 
@@ -83,6 +83,6 @@ public class RedisUtilTest {
     @Test
     public void decr() {
         Assert.assertEquals(StrConstants.SUCCESS.getValue(), util.set("year", 111));
-        Assert.assertEquals(110, util.incr("year",1));
+        Assert.assertEquals(110, util.decr("year",1));
     }
 }
