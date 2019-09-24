@@ -89,12 +89,4 @@
         </plugins>
     </build>
 
-    <distributionManagement>
-        <repository>
-            <id>com.github.freshchen</id>
-            <name>java-tools</name>
-            <url>https://maven.pkg.github.com/freshchen/fresh-tools</url>
-        </repository>
-    </distributionManagement>
-
 </project>
