@@ -21,7 +21,9 @@ public enum StrConstants {
     SH_STOCK("000001"),
     SH_STOCK_A("000002"),
     SZ_STOCK("399001"),
-    SZ_STOCK_NEW("399006")
+    SZ_STOCK_NEW("399006"),
+    SUCCESS("success"),
+    FAILURE("failure")
     ;
 
     private String value;

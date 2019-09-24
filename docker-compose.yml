@@ -16,8 +16,8 @@ services:
     restart: 'always'
     ports:
       - '6379:6379'
-    volumes:
-      - './resource/redis/data/:/data/'
+#    volumes:
+#      - './resource/redis/data/:/data/'
     command:
       redis-server
 
