@@ -1,10 +1,11 @@
 package com.github.freshchen.javatools.util;
 
 import com.github.freshchen.javatools.constant.StrConstants;
-import java.util.concurrent.TimeUnit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * @anthor LingChen
@@ -27,7 +28,7 @@ public class RedisUtil {
     public String expire(String key, long time) {
         try {
             if (time > 0) {
-                redisTemplate.expire(key, time, TimeUnit.SECONDS);
+                redisTemplate.expire(key, time, TimeUnit.MILLISECONDS);
             }
             return StrConstants.SUCCESS.getValue();
         } catch (Exception e) {

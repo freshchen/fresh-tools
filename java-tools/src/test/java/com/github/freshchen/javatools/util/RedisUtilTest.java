@@ -1,12 +1,16 @@
 package com.github.freshchen.javatools.util;
 
+import com.github.freshchen.javatools.constant.StrConstants;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 import redis.embedded.RedisServer;
 
 import java.io.IOException;
@@ -39,11 +43,11 @@ public class RedisUtilTest {
     }
 
     @Test
-    public void expire() {
-    }
-
-    @Test
-    public void getExpire() {
+    public void expire() throws InterruptedException {
+        Assert.assertEquals(StrConstants.SUCCESS.getValue(), util.set("name", "wang"));
+        util.expire("name", 100);
+        Thread.sleep(100);
+        Assert.assertNotEquals("wang", util.get("name"));
     }
 
     @Test
@@ -51,8 +55,10 @@ public class RedisUtilTest {
     }
 
     @Test
+    @Transactional
+    @Rollback()
     public void set() throws IOException {
-        System.out.println(util.set("name", "wang"));
+        Assert.assertEquals(StrConstants.SUCCESS.getValue(), util.set("name", "wang"));
     }
 
     @Test
