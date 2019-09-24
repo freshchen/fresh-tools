@@ -25,16 +25,16 @@ public class RedisUtilTest {
     @Autowired
     RedisUtil util;
 
-    RedisServer redisServer;
+    static RedisServer redisServer;
 
     @BeforeClass
-    public void setUp() throws Exception {
+    public static void setUp() throws Exception {
         redisServer = new RedisServer(6379);
         redisServer.start();
     }
 
     @AfterClass
-    public void tearDown() throws Exception {
+    public static void tearDown() throws Exception {
         redisServer.stop();
     }
 
