@@ -89,12 +89,23 @@
         </plugins>
     </build>
 
-    <distributionManagement>
-        <repository>
+    <profiles>
+        <profile>
             <id>github</id>
-            <name>GitHub freshchen Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/freshchen/java-tools</url>
-        </repository>
-    </distributionManagement>
+            <repositories>
+                <repository>
+                    <id>central</id>
+                    <url>https://repo1.maven.org/maven2</url>
+                    <releases><enabled>true</enabled></releases>
+                    <snapshots><enabled>true</enabled></snapshots>
+                </repository>
+                <repository>
+                    <id>github</id>
+                    <name>freshchen</name>
+                    <url>https://maven.pkg.github.com/freshchen</url>
+                </repository>
+            </repositories>
+        </profile>
+    </profiles>
 
 </project>
