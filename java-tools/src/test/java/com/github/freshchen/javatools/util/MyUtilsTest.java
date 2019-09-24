@@ -1,7 +1,6 @@
-package com.github.freshchen.javatools.common.util;
+package com.github.freshchen.javatools.util;
 
 import com.github.freshchen.javatools.structure.VVVNode;
-import com.github.freshchen.javatools.util.MyUtils;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,6 +14,7 @@ import java.util.List;
  * @Author: Ling Chen
  * @Description:
  */
+
 public class MyUtilsTest {
 
     private MyUtils utils;
