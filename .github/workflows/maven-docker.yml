@@ -16,7 +16,7 @@ jobs:
     - name: Build with Maven
       run: mvn clean install --file ./java-tools/pom.xml
     - name: Deploy with Maven
-      run: cd ./java-tools && mvn deploy -Dregistry=https://maven.pkg.github.com/freshchen -Dtoken=$GH_TOKEN
+      run: cd ./java-tools && mvn deploy -Dregistry=https://maven.pkg.github.com/freshchen -Dtoken=${{ secrets.GHTOKEN }}
     - name: Build docker Image
       run: docker build /home/runner/.m2/repository/com/github/freshchen/java-tools/0.0.1/ --file ./java-tools/src/main/resources/Dockerfile --tag freshchen/java-tools:latest
     - name: docker login
