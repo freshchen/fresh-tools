@@ -9,9 +9,9 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import redis.embedded.RedisServer;
 
 import java.io.IOException;
-import redis.embedded.RedisServer;
 
 
 /**
@@ -85,4 +85,50 @@ public class RedisUtilTest {
         Assert.assertEquals(StrConstants.SUCCESS.getValue(), util.set("year", 111));
         Assert.assertEquals(110, util.decr("year",1));
     }
+
+    @Test
+    public void hget() {
+        System.out.println(util.hget("name","1"));
+    }
+
+    @Test
+    public void hmget() {
+        System.out.println(util.hmget("name"));
+    }
+
+    @Test
+    public void hset() {
+        System.out.println(util.hset("name","11","22"));
+    }
+
+    @Test
+    public void hdel() {
+        System.out.println(util.hdel("name","11"));
+    }
+
+    @Test
+    public void hHasKey() {
+        System.out.println(util.hHasKey("name","11"));
+    }
+
+    @Test
+    public void hincr() {
+        System.out.println(util.hincr("name","11",22));
+    }
+
+    @Test
+    public void hdecr() {
+        System.out.println(util.hdecr("name","11",22));
+    }
+
+    @Test
+    public void sGet() {
+        System.out.println(util.sGet("name"));
+    }
+
+    @Test
+    public void sHasKey() {
+        System.out.println(util.sHasKey("name","11"));
+    }
+
 }
