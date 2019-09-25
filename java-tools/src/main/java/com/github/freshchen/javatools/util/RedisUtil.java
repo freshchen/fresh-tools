@@ -1,11 +1,12 @@
 package com.github.freshchen.javatools.util;
 
 import com.github.freshchen.javatools.constant.StrConstants;
-import java.util.*;
-import java.util.concurrent.TimeUnit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
+
+import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @anthor LingChen
@@ -15,7 +16,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class RedisUtil {
     @Autowired
-    private RedisTemplate<String, Object> redisTemplate;
+    private RedisTemplate <String, Object> redisTemplate;
 
     /**
      * set expiration time for key
@@ -35,7 +36,7 @@ public class RedisUtil {
         }
     }
 
-    public String delete(List<String> key) {
+    public String delete(List <String> key) {
         try {
             redisTemplate.delete(key);
             return StrConstants.SUCCESS.getValue();
@@ -144,8 +145,8 @@ public class RedisUtil {
      *
      * @return
      */
-    public List<String> keys() {
-        return new ArrayList<>(redisTemplate.keys("*"));
+    public List <String> keys() {
+        return new ArrayList <>(redisTemplate.keys("*"));
     }
 
     /**
@@ -153,12 +154,12 @@ public class RedisUtil {
      *
      * @return
      */
-    public Map<String, Object> keysAndValues() {
+    public Map <String, Object> keysAndValues() {
         return keysAndValues(keys());
     }
 
-    public Map<String, Object> keysAndValues(List<String> keys) {
-        Map<String, Object> map = new LinkedHashMap<>();
+    public Map <String, Object> keysAndValues(List <String> keys) {
+        Map <String, Object> map = new LinkedHashMap <>();
         keys.forEach(k -> {
             switch (redisTemplate.type(k)) {
                 case STRING:
@@ -201,7 +202,7 @@ public class RedisUtil {
      * @param key 键
      * @return 对应的多个键值
      */
-    public Map<Object, Object> hmget(String key) {
+    public Map <Object, Object> hmget(String key) {
         return redisTemplate.opsForHash().entries(key);
     }
 
@@ -212,7 +213,7 @@ public class RedisUtil {
      * @param map 对应多个键值
      * @return StrConstants.SUCCESS.getValue() 成功 false 失败
      */
-    public String hmset(String key, Map<String, String> map) {
+    public String hmset(String key, Map <String, String> map) {
         try {
             redisTemplate.opsForHash().putAll(key, map);
             return StrConstants.SUCCESS.getValue();
@@ -230,7 +231,7 @@ public class RedisUtil {
      * @param time 时间(秒)
      * @return StrConstants.SUCCESS.getValue()成功 false失败
      */
-    public String hmset(String key, Map<String, Object> map, long time) {
+    public String hmset(String key, Map <String, Object> map, long time) {
         try {
             redisTemplate.opsForHash().putAll(key, map);
             if (time > 0) {
@@ -289,8 +290,9 @@ public class RedisUtil {
      * @param key  键 不能为null
      * @param item 项 可以使多个 不能为null
      */
-    public Long hdel(String key, List<String> item) {
-        return redisTemplate.opsForHash().delete(key, item);
+    public String hdel(String key, String item) {
+        redisTemplate.opsForHash().delete(key, item);
+        return StrConstants.SUCCESS.getValue();
     }
 
     /**
@@ -335,7 +337,7 @@ public class RedisUtil {
      * @param key 键
      * @return
      */
-    public Set<Object> sGet(String key) {
+    public Set <Object> sGet(String key) {
         try {
             return redisTemplate.opsForSet().members(key);
         } catch (Exception e) {
@@ -367,7 +369,7 @@ public class RedisUtil {
      * @param values 值 可以是多个
      * @return 成功个数
      */
-    public String sSet(String key, List<String> values) {
+    public String sSet(String key, List <String> values) {
         try {
             redisTemplate.opsForSet().add(key, values);
             return StrConstants.SUCCESS.getValue();
@@ -419,7 +421,7 @@ public class RedisUtil {
      * @param values 值 可以是多个
      * @return 移除的个数
      */
-    public long sRemove(String key, List<String> values) {
+    public long sRemove(String key, List <String> values) {
         try {
             Long count = redisTemplate.opsForSet().remove(key, values);
             return count;
@@ -438,7 +440,7 @@ public class RedisUtil {
      * @param end   结束 0 到 -1代表所有值
      * @return
      */
-    public List<Object> lGet(String key, long start, long end) {
+    public List <Object> lGet(String key, long start, long end) {
         try {
             return redisTemplate.opsForList().range(key, start, end);
         } catch (Exception e) {
@@ -522,7 +524,7 @@ public class RedisUtil {
      * @param value 值
      * @return
      */
-    public String lSet(String key, List<Object> value) {
+    public String lSet(String key, List <Object> value) {
         try {
             redisTemplate.opsForList().rightPushAll(key, value);
             return StrConstants.SUCCESS.getValue();
@@ -540,7 +542,7 @@ public class RedisUtil {
      * @param time  时间(秒)
      * @return
      */
-    public String lSet(String key, List<Object> value, long time) {
+    public String lSet(String key, List <Object> value, long time) {
         try {
             redisTemplate.opsForList().rightPushAll(key, value);
             if (time > 0)

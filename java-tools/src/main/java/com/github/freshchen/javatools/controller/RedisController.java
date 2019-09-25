@@ -8,10 +8,11 @@ import com.github.freshchen.javatools.pojo.request.TwoRequest;
 import com.github.freshchen.javatools.util.RedisUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import java.util.List;
-import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * @anthor LingChen
@@ -63,8 +64,8 @@ public class RedisController {
     }
 
     @PostMapping("/hash/del/item")
-    @ApiOperation(value = "Hash 删除指定items", notes = "request.e1(key) request.e2(items)")
-    public OneMessage<Long> delHashItem(@RequestBody TwoMessage<String, List<String>> request) {
+    @ApiOperation(value = "Hash 删除指定items", notes = "request.e1(key) request.e2(item)")
+    public OneMessage<String> delHashItem(@RequestBody TwoMessage<String, String> request) {
         return new OneMessage<>(redisUtil.hdel(request.getEl(), request.getE2()));
     }
 
