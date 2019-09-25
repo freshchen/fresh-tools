@@ -45,7 +45,7 @@ public class RedisController {
     }
 
     @PostMapping("/string/add/")
-    @ApiOperation(value = "String 批量增/改", notes = "request.e1(key) request.e2(value)")
+    @ApiOperation(value = "String 增/改", notes = "request.e1(key) request.e2(value)")
     public OneMessage<String> set(@RequestBody TwoRequest<String, String> request) {
         return new OneMessage<>(redisUtil.set(request.getEl(), request.getE2()));
     }

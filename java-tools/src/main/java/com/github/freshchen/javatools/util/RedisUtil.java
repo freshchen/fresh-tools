@@ -1,14 +1,9 @@
 package com.github.freshchen.javatools.util;
 
 import com.github.freshchen.javatools.constant.StrConstants;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.connection.DataType;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
@@ -150,7 +145,7 @@ public class RedisUtil {
      * @return
      */
     public List<String> keys() {
-        return (List<String>) redisTemplate.keys("*");
+        return new ArrayList<>(redisTemplate.keys("*"));
     }
 
     /**
