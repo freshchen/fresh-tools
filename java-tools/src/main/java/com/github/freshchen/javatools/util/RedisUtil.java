@@ -212,7 +212,7 @@ public class RedisUtil {
      * @param map 对应多个键值
      * @return StrConstants.SUCCESS.getValue() 成功 false 失败
      */
-    public String hmset(String key, Map<String, Object> map) {
+    public String hmset(String key, Map<String, String> map) {
         try {
             redisTemplate.opsForHash().putAll(key, map);
             return StrConstants.SUCCESS.getValue();
@@ -419,7 +419,7 @@ public class RedisUtil {
      * @param values 值 可以是多个
      * @return 移除的个数
      */
-    public long sRemove(String key, List<Object> values) {
+    public long sRemove(String key, List<String> values) {
         try {
             Long count = redisTemplate.opsForSet().remove(key, values);
             return count;

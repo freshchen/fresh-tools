@@ -52,13 +52,13 @@ public class RedisController {
 
     @PostMapping("/hash/add/")
     @ApiOperation(value = "Hash 批量增/改", notes = "request.e1(key) request.e2(entry(item,value))")
-    public OneMessage<String> setHashs(@RequestBody TwoRequest<String, Map<String, Object>> request) {
+    public OneMessage<String> setHashs(@RequestBody TwoRequest<String, Map<String, String>> request) {
         return new OneMessage<>(redisUtil.hmset(request.getEl(), request.getE2()));
     }
 
     @PostMapping("/hash/add/item")
     @ApiOperation(value = "Hash 增/改指定Hash表", notes = "request.e1(key) request.e2(item) request.e3(value)")
-    public OneMessage<String> setHashItem(@RequestBody ThreeMessage<String, String, Object> request) {
+    public OneMessage<String> setHashItem(@RequestBody ThreeMessage<String, String, String> request) {
         return new OneMessage<>(redisUtil.hset(request.getE1(), request.getE2(), request.getE3()));
     }
 
@@ -76,7 +76,7 @@ public class RedisController {
 
     @PostMapping("/set/del/item")
     @ApiOperation(value = "Set 删除指定items", notes = "request.e1(key) request.e2(items)")
-    public OneMessage<Long> delSetItem(@RequestBody TwoMessage<String, List<Object>> request) {
+    public OneMessage<Long> delSetItem(@RequestBody TwoMessage<String, List<String>> request) {
         return new OneMessage<>(redisUtil.sRemove(request.getEl(), request.getE2()));
     }
 }
