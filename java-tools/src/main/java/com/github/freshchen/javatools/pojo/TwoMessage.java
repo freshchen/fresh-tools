@@ -1,4 +1,4 @@
-package com.github.freshchen.javatools.pojo.message;
+package com.github.freshchen.javatools.pojo;
 
 import java.io.Serializable;
 import lombok.AllArgsConstructor;
@@ -16,8 +16,9 @@ import org.springframework.stereotype.Component;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class OneMessage<E> implements Serializable {
+public class TwoMessage<E, F> implements Serializable {
 
-    private static final long serialVersionUID = 7476207489423460323L;
+    private static final long serialVersionUID = -7174439080889738894L;
     private E el;
+    private F e2;
 }

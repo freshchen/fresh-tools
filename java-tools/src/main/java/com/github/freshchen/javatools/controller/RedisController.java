@@ -1,13 +1,15 @@
 package com.github.freshchen.javatools.controller;
 
 
-import com.github.freshchen.javatools.pojo.request.OneRequest;
-import com.github.freshchen.javatools.pojo.request.ThreeRequest;
+import com.github.freshchen.javatools.pojo.OneMessage;
+import com.github.freshchen.javatools.pojo.ThreeMessage;
+import com.github.freshchen.javatools.pojo.TwoMessage;
 import com.github.freshchen.javatools.pojo.request.TwoRequest;
-import com.github.freshchen.javatools.pojo.response.OneResponse;
 import com.github.freshchen.javatools.util.RedisUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,27 +26,57 @@ public class RedisController {
     @Autowired
     private RedisUtil redisUtil;
 
-    @PostMapping("/redis/set/")
-    @ApiOperation(value = "增/改", notes = "request.el1(key) request.el2(value)")
-    public OneResponse<String> set(@RequestBody TwoRequest<String, String> request) {
-        return new OneResponse<>(redisUtil.set(request.getEl(), request.getE2()));
+    @GetMapping("/key/get/all/")
+    @ApiOperation(value = "Key 查所有key和值")
+    public OneMessage<Map<String, Object>> keysAndValues() {
+        return new OneMessage<>(redisUtil.keysAndValues());
     }
 
-    @PostMapping("/redis/set/expire")
-    @ApiOperation(value = "增/改(指定过期时间)", notes = "request.el1(key) request.el2(value) request.el3(expire time)")
-    public OneResponse<String> setWithTime(@RequestBody ThreeRequest<String, String, Long> request) {
-        return new OneResponse<>(redisUtil.set(request.getEl1(), request.getEl2(), request.getEl3()));
+    @PostMapping("/key/get/values")
+    @ApiOperation(value = "Key 查指定key的值", notes = "request.e1(keys)")
+    public OneMessage<Map<String, Object>> values(@RequestBody OneMessage<List<String>> request) {
+        return new OneMessage<>(redisUtil.keysAndValues(request.getEl()));
     }
 
-    @PostMapping("/redis/get/")
-    @ApiOperation(value = "查key的值", notes = "request.el1(key)")
-    public OneResponse<Object> get(@RequestBody OneRequest<String> request) {
-        return new OneResponse<>(redisUtil.get(request.getEl()));
+    @PostMapping("/key/del/")
+    @ApiOperation(value = "Key 删除指定keys", notes = "request.e1(keys)")
+    public OneMessage<String> delete(@RequestBody OneMessage<List<String>> request) {
+        return new OneMessage<>(redisUtil.delete(request.getEl()));
     }
 
-    @PostMapping("/redis/get/expire")
-    @ApiOperation(value = "查key过期时间", notes = "request.el1(key)")
-    public OneResponse<Long> getExpire(@RequestBody OneRequest<String> request) {
-        return new OneResponse<>(redisUtil.getExpire(request.getEl()));
+    @PostMapping("/string/add/")
+    @ApiOperation(value = "String 批量增/改", notes = "request.e1(key) request.e2(value)")
+    public OneMessage<String> set(@RequestBody TwoRequest<String, String> request) {
+        return new OneMessage<>(redisUtil.set(request.getEl(), request.getE2()));
+    }
+
+    @PostMapping("/hash/add/")
+    @ApiOperation(value = "Hash 批量增/改", notes = "request.e1(key) request.e2(entry(item,value))")
+    public OneMessage<String> setHashs(@RequestBody TwoRequest<String, Map<String, Object>> request) {
+        return new OneMessage<>(redisUtil.hmset(request.getEl(), request.getE2()));
+    }
+
+    @PostMapping("/hash/add/item")
+    @ApiOperation(value = "Hash 增/改指定Hash表", notes = "request.e1(key) request.e2(item) request.e3(value)")
+    public OneMessage<String> setHashItem(@RequestBody ThreeMessage<String, String, Object> request) {
+        return new OneMessage<>(redisUtil.hset(request.getE1(), request.getE2(), request.getE3()));
+    }
+
+    @PostMapping("/hash/del/item")
+    @ApiOperation(value = "Hash 删除指定items", notes = "request.e1(key) request.e2(items)")
+    public OneMessage<Long> delHashItem(@RequestBody TwoMessage<String, List<String>> request) {
+        return new OneMessage<>(redisUtil.hdel(request.getEl(), request.getE2()));
+    }
+
+    @PostMapping("/set/add/item")
+    @ApiOperation(value = "Set 增/改指定items", notes = "request.e1(key) request.e2(items)")
+    public OneMessage<String> setSetItem(@RequestBody TwoMessage<String, List<String>> request) {
+        return new OneMessage<>(redisUtil.sSet(request.getEl(), request.getE2()));
+    }
+
+    @PostMapping("/set/del/item")
+    @ApiOperation(value = "Set 删除指定items", notes = "request.e1(key) request.e2(items)")
+    public OneMessage<Long> delSetItem(@RequestBody TwoMessage<String, List<Object>> request) {
+        return new OneMessage<>(redisUtil.sRemove(request.getEl(), request.getE2()));
     }
 }

@@ -28,8 +28,8 @@ public class WorkController {
     private WorkService workService;
 
     @PostMapping("/plan/greedy/")
-    @ApiOperation(value = "按照成本收益制定计划", notes = "request.el1(计划列表) request.el1.v1(计划名) " +
-            "request.el1.v2(需要资源) request.el1.v3(带来收益) request.el2(初始资源) request.el3(可执行计划上限)")
+    @ApiOperation(value = "按照成本收益制定计划", notes = "request.e1(计划列表) request.e1.v1(计划名) " +
+            "request.e1.v2(需要资源) request.e1.v3(带来收益) request.e2(初始资源) request.e3(可执行计划上限)")
     OneResponse <String> greedyPlan(@RequestBody ThreeRequest <List <VVVNode <String, Integer, Integer>>, Integer, Integer> request) {
         return workService.greedyPlan(request.getEl1(), request.getEl2(), request.getEl3());
     }

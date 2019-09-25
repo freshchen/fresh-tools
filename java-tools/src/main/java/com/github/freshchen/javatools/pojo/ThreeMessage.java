@@ -1,4 +1,4 @@
-package com.github.freshchen.javatools.pojo.message;
+package com.github.freshchen.javatools.pojo;
 
 import java.io.Serializable;
 import lombok.AllArgsConstructor;
@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
 public class ThreeMessage<E, F, G> implements Serializable {
 
     private static final long serialVersionUID = 4999224804562411289L;
-    private E el1;
-    private F el2;
-    private G el3;
+    private E e1;
+    private F e2;
+    private G e3;
 }
