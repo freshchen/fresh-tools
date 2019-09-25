@@ -1,6 +1,7 @@
 package com.github.freshchen.javatools.util;
 
 import com.github.freshchen.javatools.structure.VVVNode;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -36,7 +37,7 @@ public class MyUtilsTest {
 
     @Test
     public void getStockInfo() throws IOException {
-        System.out.println(utils.getStockInfo(Arrays.asList("600900","300530")));
+        System.out.println(utils.getStockInfo(Arrays.asList("600900", "300530")));
     }
 
     @Test
@@ -60,7 +61,8 @@ public class MyUtilsTest {
                 new VVVNode <>("cpp", 1170, 50),
                 new VVVNode <>("js", 1140, 55)
         );
-        System.out.println(utils.greedyPlan(list, 100, 5));;
+        System.out.println(utils.greedyPlan(list, 100, 5));
+        ;
     }
 
     @Test
@@ -74,7 +76,8 @@ public class MyUtilsTest {
                 new VVVNode <>("cpp", 1570, 50),
                 new VVVNode <>("js", 1840, 55)
         );
-        System.out.println(utils.greedyPlan(list, 1000, 5));;
+        System.out.println(utils.greedyPlan(list, 1000, 5));
+        ;
     }
 
     @Test
@@ -88,6 +91,18 @@ public class MyUtilsTest {
                 new VVVNode <>("cpp", 1170, 50),
                 new VVVNode <>("js", 1140, 55)
         );
-        System.out.println(utils.greedyPlan(list, 10000, 100));;
+        System.out.println(utils.greedyPlan(list, 10000, 100));
+        ;
+    }
+
+    @Test
+    public void factorial() {
+        Assert.assertEquals(120, utils.factorial(5).intValue());
+    }
+
+    @Test
+    public void accumulator() {
+        Assert.assertEquals(5050, utils.accumulator(1, 100));
+        Assert.assertEquals(54, utils.accumulator(-1, 10));
     }
 }
