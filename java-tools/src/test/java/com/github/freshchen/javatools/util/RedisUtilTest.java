@@ -9,9 +9,9 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import redis.embedded.RedisServer;
 
 import java.io.IOException;
-import redis.embedded.RedisServer;
 
 
 /**
@@ -85,4 +85,41 @@ public class RedisUtilTest {
         Assert.assertEquals(StrConstants.SUCCESS.getValue(), util.set("year", 111));
         Assert.assertEquals(110, util.decr("year",1));
     }
+
+    @Test
+    public void hget() {
+    }
+
+    @Test
+    public void hmget() {
+    }
+
+    @Test
+    public void hset() {
+    }
+
+    @Test
+    public void hdel() {
+    }
+
+    @Test
+    public void hHasKey() {
+    }
+
+    @Test
+    public void hincr() {
+    }
+
+    @Test
+    public void hdecr() {
+    }
+
+    @Test
+    public void sGet() {
+    }
+
+    @Test
+    public void sHasKey() {
+    }
+
 }

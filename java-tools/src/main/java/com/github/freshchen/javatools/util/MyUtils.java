@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.math.BigInteger;
 import java.net.URL;
 import java.net.URLConnection;
 import java.time.Instant;
@@ -153,6 +154,28 @@ public class MyUtils {
         }
         buffer.append("最终资源：").append(Integer.valueOf(init));
         return buffer.toString();
+    }
+
+
+    public BigInteger factorial(int num) {
+        ArrayList list = new ArrayList();
+        list.add(BigInteger.valueOf(1));
+        for (int i = list.size(); i <= num; i++) {
+            BigInteger lastfact = (BigInteger) list.get(i - 1);//获得第一个元素
+            BigInteger nextfact = lastfact.multiply(BigInteger.valueOf(i));//获得下一个数组
+            list.add(nextfact);
+        }
+        return (BigInteger) list.get(num);//返回数组中的下标为num的值
+    }
+
+    public long accumulator(long num1, long num2) {
+        long from = Math.min(num1, num2);
+        long to = Math.max(num1, num2);
+        long result = from;
+        while (from < to) {
+            result += ++from;
+        }
+        return result;
     }
 
 }
