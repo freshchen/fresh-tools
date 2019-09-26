@@ -19,7 +19,7 @@ services:
 #    volumes:
 #      - './resource/redis/data/:/data/'
     command:
-      redis-server
+      redis-server --appendonly yes
 
 #  # 数据库
 #  mysql:

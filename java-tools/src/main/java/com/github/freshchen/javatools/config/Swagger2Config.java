@@ -24,7 +24,7 @@ public class Swagger2Config {
     @Bean
     public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .apiInfo(new ApiInfoBuilder().title("Personal Tools").contact(new Contact("freshchen", "***", "***")).description("Have a nice day!").version("1.0").build())
+                .apiInfo(new ApiInfoBuilder().title("Tools").contact(new Contact("freshchen", "***", "***")).description("Have a nice day!").version("1.0").build())
                 .useDefaultResponseMessages(false)
                 .select()
                 .apis(RequestHandlerSelectors.any())
