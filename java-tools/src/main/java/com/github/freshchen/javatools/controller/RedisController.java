@@ -71,7 +71,7 @@ public class RedisController {
 
     @PostMapping("/set/add/item")
     @ApiOperation(value = "Set 增/改指定items", notes = "request.e1(key) request.e2(items)")
-    public OneMessage<String> setSetItem(@RequestBody TwoMessage<String, List<String>> request) {
+    public OneMessage<String> setSetItem(@RequestBody TwoMessage<String, String> request) {
         return new OneMessage<>(redisUtil.sSet(request.getEl(), request.getE2()));
     }
 

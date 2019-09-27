@@ -366,12 +366,12 @@ public class RedisUtil {
      * 将数据放入set缓存
      *
      * @param key    键
-     * @param values 值 可以是多个
+     * @param value 值 可以是多个
      * @return 成功个数
      */
-    public String sSet(String key, List <String> values) {
+    public String sSet(String key, String value) {
         try {
-            redisTemplate.opsForSet().add(key, values);
+            redisTemplate.opsForSet().add(key, value);
             return StrConstants.SUCCESS.getValue();
         } catch (Exception e) {
             e.printStackTrace();
