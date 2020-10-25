@@ -14,7 +14,7 @@ jobs:
       with:
         java-version: 1.8
     - name: Build with Maven
-      run: mvn clean install --file ./tools/pom.xml
+      run: mvn clean install -Dmaven.test.skip=true --file ./tools/pom.xml
     - name: Build docker Image
       run: docker build /home/runner/.m2/repository/com/example/tools/0.0.1-SNAPSHOT/ --file ./tools/src/main/resources/Dockerfile --tag freshchen/java-tools:latest
     - name: docker login
