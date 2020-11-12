@@ -5,6 +5,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -20,7 +21,7 @@ public class CalculatorController {
 
     @GetMapping("/sum")
     @ApiOperation(value = "查询所有不重要的信息", notes = "查询所有不重要的信息")
-    public JsonResult<Long> findAll(List<Long> nums) {
+    public JsonResult<Long> sum(@RequestParam(name = "nums") List<Long> nums) {
         long sum = nums.stream()
                 .mapToLong(Long::longValue)
                 .sum();
