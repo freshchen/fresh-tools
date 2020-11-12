@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import java.util.stream.Stream;
 
 /**
  * @author darcy
@@ -20,9 +20,10 @@ import java.util.List;
 public class CalculatorController {
 
     @GetMapping("/sum")
-    @ApiOperation(value = "查询所有不重要的信息", notes = "查询所有不重要的信息")
-    public JsonResult<Long> sum(@RequestParam(name = "nums") List<Long> nums) {
-        long sum = nums.stream()
+    @ApiOperation(value = "求和", notes = "求和")
+    public JsonResult<Long> sum(@RequestParam(name = "nums") String nums) {
+        long sum = Stream.of(nums.split(","))
+                .map(Long::valueOf)
                 .mapToLong(Long::longValue)
                 .sum();
         return JsonResult.ok(sum);
